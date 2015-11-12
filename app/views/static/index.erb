@@ -1,2 +1,24 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+<h3>Welcome to iBilik</h3>
+
+<div>
+	<% if logged_in? %>
+		<br><h3>Welcome</h3>
+		<br><a href="/users/<%= current_user.id %>"><h3><%= current_user.name %></a></h3>
+
+			<form method="post" action="/logout">
+				<button type="submit" class="btn btn-default" >Logout</button>
+				<input name="_method" type="hidden" value="delete" />
+			</form>
+		
+		<hr>
+		<div>
+
+	<% else %>
+		Click this link to Signup <a href="/signup">Signup</a><br>
+		<p></p>
+		<p></p>
+		<%=@successful_signup if @successful_signup %>
+		<p></p>
+		Click this link to Login <a href="/login">Login</a><br>
+	<% end %> <!-- logged_in end -->
+</div>
